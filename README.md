@@ -2,15 +2,15 @@
 Trying to recreate article The most popular genes in the human genome (https://www.nature.com/articles/d41586-017-07291-9) for prokaryotes (bacteria)
 
 **Why ?**
-I am a python newbie, but not new to programming overall, I am good with R, Perl and have an undiagnosed OCD of trying to write efficient one-liners in shell for small jobs ;-)
-R was self-taught and I came to realize pretty early on that when it comes to programming, 
+I am a python newbie, but not new to programming _per se_. I am good with R, Perl and have an undiagnosed OCD of trying to write efficient shell one-liners ;-)
+R was a self-taught effort and I came to realize pretty early on that when it comes to programming, 
   > reading basics only takes you so far ... pick up a project and learn along the way !
 
 ### Step1 - Fork it !
 
 #### Make sure that the forked repo can be synced with the original repo
 
-### Step2 - creating a safe environment for play aka Conda !
+### Step2 - Creating a safe environment for play aka Conda !
 
 ### Step  Follow the instructions
 
@@ -38,5 +38,12 @@ Lets try again
 `python gene-citation-counts/scripts/pmids_by_date.py --startdate 1990/01/01 --enddate 2017/11/05`
 
 :tada: **it worked !!**
+
+#### What does that script do ?
+
+The script takes range of dates as input (defaults to 2014/01/01 if none provided), and then uses NCBI's eutils to download a list of PubmedID's for those dates (max records downloaded 100000). It will create a `ssv` format file (with date as filename) that contains date and Pubmed article ID separated by space.
+
+
+:bookmark: Add help menu to the script !
 
 
