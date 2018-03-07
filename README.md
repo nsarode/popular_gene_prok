@@ -21,7 +21,7 @@ Get list of citations by date
 :interrobang: Hiccup 1 :interrobang:
 `FileNotFoundError: [Errno 2] No such file or directory: './data/pmid_by_date/1990_01_02.ssv'`
 
-####Troubleshooting 101 - Look at the damned code 
+#### Troubleshooting 101 - Look at the damned code 
 
 At first glance, one obvious mistake appeared to be that I was not specifying the `--output-dir` parameter for the script. However that didn't solve the issue. The error just changed to now include the outdir path I provided . So the issue was not that I didn't give that option (since from the code it is obvious that it should default to `./data/pmid_by_date`). 
 
