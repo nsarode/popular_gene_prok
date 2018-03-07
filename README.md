@@ -18,16 +18,25 @@ Get list of citations by date
 
 `python scripts/pmids_by_date.py --startdate 1990/01/01 --enddate 2017/11/05`
 
-:interrobang: Hiccup 1 :interrobang: - `FileNotFoundError: [Errno 2] No such file or directory: './data/pmid_by_date/1990_01_02.ssv'`
+:interrobang: Hiccup 1 :interrobang:
+`FileNotFoundError: [Errno 2] No such file or directory: './data/pmid_by_date/1990_01_02.ssv'`
 
-Troubleshooting 101 - Look at the damned code 
+####Troubleshooting 101 - Look at the damned code 
 
-At first glance, one obvious mistake appeared to be that I was not specifying the `--output-dir` parameter for the script. However that didn't solve the issue. The error just changed to now in path to the file (which now became the outputdir I gave). So the issue was not that I didn't give that option (since from the code it is obvious that it should default to `./data/pmid_by_date`). 
+At first glance, one obvious mistake appeared to be that I was not specifying the `--output-dir` parameter for the script. However that didn't solve the issue. The error just changed to now include the outdir path I provided . So the issue was not that I didn't give that option (since from the code it is obvious that it should default to `./data/pmid_by_date`). 
 
 :zap: Turns out that python can't just create paths willy nilly unless you specifically ask it to do so ! Simple Googling and ol faithful [Stackoverflow](https://stackoverflow.com/questions/12517451/automatically-creating-directories-with-file-output) helped solve the issue.
 
-Code edited (changed commited and pushed on github), lets try again
+Code edited (changed commited and pushed on github), 
+```python
+import os
+os.makedirs(os.path.dirname(filename), exist_ok=True)
+```
+
+Lets try again
 
 `python gene-citation-counts/scripts/pmids_by_date.py --startdate 1990/01/01 --enddate 2017/11/05`
+
+:tada: **it worked !!**
 
 
