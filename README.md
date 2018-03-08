@@ -45,6 +45,7 @@ Lets try again
 
 The script takes range of dates as input (defaults to 2014/01/01 if none provided), and then uses NCBI's [eutils](https://www.ncbi.nlm.nih.gov/books/NBK179288/) to download a list of PubmedID's for those dates (max records downloaded 100000). It will create a `ssv` format file (with date as filename) that contains date and Pubmed article ID separated by space.
 
+**NOTE** A quick advanced pubmed search (webpage) revealed that the number of publications on it for the given date range is 18851774. Can we check if we got all records ? 
 
 :bookmark: Add help menu to the script !
 
@@ -60,12 +61,9 @@ The above command will generate a consolidated file that contains the Year of pu
 
 #### Get NCBI's genes to publications table
 
-Given command
+```
+mkdir -p ./data/genbank-data
+wget -N -P ./data/genbank-data/ ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/gene2pubmed.gz
+gunzip ./data/genbank-data/gene2pubmed.gz
 
 ```
-wget -N -P ~/data/genbank-data/ ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/gene2pubmed.gz; \
-gunzip ~/data/genbank-data/gene2pubmed.gz; \
-mkdir ~/data/genbank-data/hg19/; 
-
-```
-
