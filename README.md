@@ -45,7 +45,7 @@ Lets try again
 
 The script takes range of dates as input (defaults to 2014/01/01 if none provided), and then uses NCBI's [eutils](https://www.ncbi.nlm.nih.gov/books/NBK179288/) to download a list of PubmedID's for those dates (max records downloaded 100000). It will create a `ssv` format file (with date as filename) that contains date and Pubmed article ID separated by space.
 
-**NOTE** A quick advanced pubmed search (webpage) revealed that the number of publications on it for the given date range is 18851774. Can we check if we got all records ? 
+:question: A quick advanced pubmed search (webpage) revealed that the number of publications on it for the given date range is 18851774. Can we check if we got all records ? 
 
 :bookmark: Add help menu to the script !
 
