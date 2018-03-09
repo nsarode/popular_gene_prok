@@ -67,3 +67,9 @@ wget -N -P ./data/genbank-data/ ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/gene2pubmed
 gunzip ./data/genbank-data/gene2pubmed.gz
 
 ```
+The file `gene2pubmed` contains 3 columns
+  1. tax_id
+  2. Gene_ID
+  3. Pubmed_ID
+
+According to the original instructions, all genes that are assigned to Human (tax_id 9606) were selected for further analysis. This is where my protocol will __branch out__ from the original one. I am not really that interested in Human genes. Its the bacteria that fascinate me ! Now here is the rub, Bacteria is a superkingdom (tax_id 2); what this list contains is tax_id species. So now how do we deal with this ?
