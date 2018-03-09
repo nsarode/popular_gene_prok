@@ -72,4 +72,18 @@ The file `gene2pubmed` contains 3 columns
   2. Gene_ID
   3. Pubmed_ID
 
+This is an interesting file to explore. Lets see some quick facts about it !
+There are total 10695821 lines in this file (not counting the column header). But does this means that there are 10695821 publications ? A quick `head` or `tail` of the file will let you know thats not the case. A single publication worked on multiple genes from each species, the same species (and/or genes) were studies by multiple publications... so on and so forth.
+
+How many unique species are listed in this document ?
+
+`awk '{print $1}' gene2pubmed| sort | uniq | wc -l` 13951
+
+Doing the same for genes and pubmedID (only changing the column in `awk`) we also see that there are `6002840` unique genes and `1124098` pubmed articles in total.
+
+
+
+What
+`awk '{print $1}' gene2pubmed | sort -nr | uniq -c | sort -nr |head`
+
 According to the original instructions, all genes that are assigned to Human (tax_id 9606) were selected for further analysis. This is where my protocol will __branch out__ from the original one. I am not really that interested in Human genes. Its the bacteria that fascinate me ! Now here is the rub, Bacteria is a superkingdom (tax_id 2); what this list contains is tax_id species. So now how do we deal with this ?
