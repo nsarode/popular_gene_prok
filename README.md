@@ -67,7 +67,9 @@ wget -N -P ./data/genbank-data/ ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/gene2pubmed
 gunzip ./data/genbank-data/gene2pubmed.gz
 
 ```
-The file `gene2pubmed` contains 3 columns
+
+Most (if not all) FTP sites will have a README file explaining the directory/file structure and content. The [gene2pubmed readme](gene2pubmed_README.md) tell me that it is updated daily and it contains 3 tab separated columns
+
   1. tax_id
   2. Gene_ID
   3. Pubmed_ID
