@@ -97,3 +97,11 @@ Within species, what genes are most studied per taxa ?
 Is there a correlation between the most studied gene and the most studied taxa ?
 
 According to the original instructions, all genes that are assigned to Human (tax_id 9606) were selected for further analysis. This is where my protocol will __branch out__ from the original one. I am not really that interested in Human genes. Its the bacteria that fascinate me ! Now here is the rub, Bacteria is a superkingdom (tax_id 2); what this list contains is tax_id species. So now how do we deal with this ?
+
+| Tax_id | Parent tax_id | Name |
+| ---- | ---- | ---- |
+| 2 |	131567	| Bacteria |
+| 2157	| 131567	| Archaea |
+| 2759	| 131567	| Eukaryote |
+| 10239	| 1	| Viruses |
+| 12884	| 1	| Viriods |
