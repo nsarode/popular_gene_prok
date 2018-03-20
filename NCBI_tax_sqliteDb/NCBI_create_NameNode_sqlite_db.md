@@ -36,6 +36,6 @@ If everything is OK, uncompress the file
 tar -zxvf new_taxdump.tar.gz
 ```
 
-2. Now we use an R script [NCBI_taxdmpfile_manipulation.R](NCBI_taxdmpfile_manipulation.R) to first create two files, namely : `selected_names.dmp` & `selected_nodes.dmp`
+2. Now we use an R script [NCBI_taxdmpfile_manipulation.R](NCBI_taxdmpfile_manipulation.R) to first create two files, namely : `selected_names_Mar18.dmp` & `selected_nodes_Mar18.dmp`
 
 3. Finally we create a sqlite database `NameNode.sqlite` using R script [ncbi_taxa_sqlite.R](ncbi_taxa_sqlite.R)
