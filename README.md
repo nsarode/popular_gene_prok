@@ -1,11 +1,18 @@
-# popular_gene
-Trying to recreate article The most popular genes in the human genome (https://www.nature.com/articles/d41586-017-07291-9) for prokaryotes (bacteria)
+# Popular genes in prokaryotes
+Trying to 
+
+- replicate the analysis in the article [The most popular genes in the human genome](https://www.nature.com/articles/d41586-017-07291-9)
+
+- repeat the analysis for prokaryotes (focussing on bacteria for starters) and see what I get. 
 
 **Why ?**
+
 I am a python newbie, but not new to programming _per se_. I am good with R, Perl and have an undiagnosed OCD of trying to write efficient shell one-liners ;-)
 
 R was a self-taught effort and I came to realize pretty early on that when it comes to programming, 
   > reading basics only takes you so far ... pick up a project and learn along the way !
+
+And prokaryotes because, lets face it ... its a microbial world ! 
 
 ### Step1 - Fork it !
 
@@ -75,28 +82,31 @@ Most (if not all) FTP sites will have a README file explaining the directory/fil
   3. Pubmed_ID
 
 This is an interesting file to explore. Lets see some quick facts about it !
+
 There are total 10695821 lines in this file (not counting the column header). But does this means that there are 10695821 publications ? A quick `head` or `tail` of the file will let you know thats not the case. A single publication worked on multiple genes from each species, the same species (and/or genes) were studies by multiple publications... so on and so forth.
 
 How many unique species are listed in this document ?
 
-`awk '{print $1}' gene2pubmed| sort | uniq | wc -l` 13951
+`awk '{print $1}' gene2pubmed| sort | uniq | wc -l` 13951 (subtract 1 for column header)
 
-Doing the same for genes and pubmedID (only changing the column in `awk`) we also see that there are `6002840` unique genes and `1124098` pubmed articles in total.
-
-
-
-What
-`awk '{print $1}' gene2pubmed | sort -nr | uniq -c | sort -nr |head`
+Doing the same for genes and pubmedID (only changing the column in `awk`) we also see that there are `6002839` unique genes and `1124097` pubmed articles in total.
 
 Questions that come to mind:
-What the the genes that were most studied ? i.e. most publications associated with it
-Most studied species ? Can we narrow this down to different taxa levels ? 
-If we move to the consolidated file, does the results above hold true between the years we restricted to ? Any trend associated with year?
-On the flip side what is the least studied species? Can we get proof of concept using NCBI's taxidToGeneNames.pl script ?
-Within species, what genes are most studied per taxa ?
-Is there a correlation between the most studied gene and the most studied taxa ?
+- What the the genes that were most studied ? i.e. most publications associated with it. We know from the original publication that `TP53` is the most studied gene. But what about in bacteria ? Similarly ...
+- Most studied species ? Can we narrow this down to different taxa levels ? 
+- If we move to the consolidated file (by year), do the results above hold true between the years we restricted to ? Any trend associated with year?
+- On the flip side what is the least studied species? Can we get proof of concept using NCBI's taxidToGeneNames.pl script ?
+- Within species, what genes are most studied per taxa ?
+- Is there a correlation between the most studied gene and the most studied taxa ?
 
-According to the original instructions, all genes that are assigned to Human (tax_id 9606) were selected for further analysis. This is where my protocol will __branch out__ from the original one. I am not really that interested in Human genes. Its the bacteria that fascinate me ! Now here is the rub, Bacteria is a superkingdom (tax_id 2); what this list contains is tax_id species. So now how do we deal with this ?
+I guess the questions will never end. Lets begin ...
+
+## Bacteria is a superkingdom :smile:
+
+According to the original instructions, all genes that are assigned to Human (tax_id 9606) were selected for further analysis. This is where my protocol will __branch out__ from the original one. I am not really that interested in Human genes. Its the bacteria that fascinate me ! 
+However, Bacteria is a superkingdom (tax_id 2); what this list contains is tax_id species. So now how do we deal with this ?
+
+NCBI has 5 different superkingdoms.
 
 | Tax_id | Parent tax_id | Name |
 | ---- | ---- | ---- |
@@ -105,3 +115,17 @@ According to the original instructions, all genes that are assigned to Human (ta
 | 2759	| 131567	| Eukaryote |
 | 10239	| 1	| Viruses |
 | 12884	| 1	| Viriods |
+
+We need to determine the superkindgdom (and classification) of individual taxid's in the list to identify and separate bacteria (and move on to other prokaryotes later). [NCBI taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) is a fine resource when you have few taxa to search for. But for our purposes, this is not feasible !
+
+### Sqlite to the rescue !
+
+I had faced this issue before and had created a handy R script to create a database using NCBI's taxonomy files ! I could try to re-write the script in python, but chose not to waste time on it <sup>**</sup>. The scripts and relevant instructions to create the database are [here](NCBI_tax_sqliteDb/)
+
+<sup>**</sup> There are multiple perfectly good modules/packages that can give you NCBI taxonomy information from taxid (for e.g. [ETE toolkit](http://etetoolkit.org/) is an excellent package). But I wrote the script to create the database at a time when (a) there were not many packages available; (b) I was learning R and thought learning both R and sqlite in a script won't be a bad practice.
+
+
+### Take-off to Jupyter :rocket:
+
+With the database created, all we have to do is query the database and begin !
+
