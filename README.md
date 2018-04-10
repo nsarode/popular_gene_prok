@@ -1,5 +1,6 @@
 # Popular genes in prokaryotes
-Trying to 
+
+This repo contains my scripts to:
 
 - replicate the analysis in the article [The most popular genes in the human genome](https://www.nature.com/articles/d41586-017-07291-9)
 
