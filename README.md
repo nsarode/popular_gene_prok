@@ -135,7 +135,9 @@ R has markdown (Rmd) and python has Jupyter(lab) notebooks ! I will use Jupyter 
 
 With the database created, all we have to do is query the database and begin !
 
-Reproducing results from original paper - [AllTaxa](./JupyterNotebook/AllTaxa.ipynb)
+Jupyter lab notebooks 
 
-Repeating analysis for bacteria - [Bacteria](./JupyterNotebook/Bacteria.ipynb)
+- Reproducing results from original paper - [AllTaxa.ipynb](./JupyterNotebook/AllTaxa.ipynb)
+
+- Repeating analysis for bacteria - [Bacteria.ipynb](./JupyterNotebook/Bacteria.ipynb)
 
