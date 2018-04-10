@@ -14,13 +14,17 @@ R was a self-taught effort and I came to realize pretty early on that when it co
 
 And prokaryotes because, lets face it ... its a microbial world ! 
 
+## Prep
+
 ### Step1 - Fork it !
 
-#### Make sure that the forked repo can be synced with the original repo
+Fork the [original repo](https://github.com/pkerpedjiev/gene-citation-counts.git) for scripts and instructions
 
 ### Step2 - Creating a safe environment for play aka Conda !
 
-### Now follow the instructions
+Checkout my [gist](https://gist.github.com/nsarode/e37f3284c11d69192b905fe998553b2a) for Conda installation instructions and commands
+
+## Now follow the instructions
 
 #### Get list of citations by date
 
@@ -106,7 +110,7 @@ I guess the questions will never end. Lets begin ...
 According to the original instructions, all genes that are assigned to Human (tax_id 9606) were selected for further analysis. This is where my protocol will __branch out__ from the original one. I am not really that interested in Human genes. Its the bacteria that fascinate me ! 
 However, Bacteria is a superkingdom (tax_id 2); what this list contains is tax_id species. So now how do we deal with this ?
 
-NCBI has 5 different superkingdoms.
+NCBI has the following taxids for the 5 different superkingdoms.
 
 | Tax_id | Parent tax_id | Name |
 | ---- | ---- | ---- |
@@ -116,16 +120,21 @@ NCBI has 5 different superkingdoms.
 | 10239	| 1	| Viruses |
 | 12884	| 1	| Viriods |
 
-We need to determine the superkindgdom (and classification) of individual taxid's in the list to identify and separate bacteria (and move on to other prokaryotes later). [NCBI taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) is a fine resource when you have few taxa to search for. But for our purposes, this is not feasible !
+We need to determine the superkindgdom (and classification) of individual taxid's in the gene2pubmed file to identify and separate bacteria (possibly move on to other prokaryotes later). [NCBI taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy) is a fine resource when you have few taxa to search for. But for our purposes, this is not feasible !
 
 ### Sqlite to the rescue !
 
 I had faced this issue before and had created a handy R script to create a database using NCBI's taxonomy files ! I could try to re-write the script in python, but chose not to waste time on it <sup>**</sup>. The scripts and relevant instructions to create the database are [here](NCBI_tax_sqliteDb/)
 
-<sup>**</sup> There are multiple perfectly good modules/packages that can give you NCBI taxonomy information from taxid (for e.g. [ETE toolkit](http://etetoolkit.org/) is an excellent package). But I wrote the script to create the database at a time when (a) there were not many packages available; (b) I was learning R and thought learning both R and sqlite in a script won't be a bad practice.
-
+<sup>**</sup> There are multiple perfectly good modules/packages that can give you NCBI taxonomy information from taxid (for e.g. [ETE toolkit](http://etetoolkit.org/) is an excellent package). But I wrote the script to create the database at a time when (a) there were not many packages available; (b) I was learning R and thought learning both R and sqlite won't be a bad practice.
 
 ### Take-off to Jupyter :rocket:
 
+R has markdown (Rmd) and python has Jupyter(lab) notebooks ! I will use Jupyter lab for my analysis. 
+
 With the database created, all we have to do is query the database and begin !
+
+Reproducing results from original paper - [AllTaxa](./JupyterNotebook/AllTaxa.ipynb)
+
+Repeating analysis for bacteria - [Bacteria](./JupyterNotebook/Bacteria.ipynb)
 
