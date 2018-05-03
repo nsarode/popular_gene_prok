@@ -127,7 +127,7 @@ We need to determine the superkindgdom (and classification) of individual taxid'
 
 I had faced this issue before and had created a handy R script to create a database using NCBI's taxonomy files ! I could try to re-write the script in python, but chose not to waste time on it <sup>**</sup>. The scripts and relevant instructions to create the database are [here](NCBI_tax_sqliteDb/)
 
-<sup>**</sup> There are multiple perfectly good modules/packages that can give you NCBI taxonomy information from taxid (for e.g. [ETE toolkit](http://etetoolkit.org/) is an excellent package). But I wrote the script to create the database at a time when (a) there were not many packages available; (b) I was learning R and thought learning both R and sqlite won't be a bad practice.
+<sup>**</sup> There are multiple perfectly good modules/packages that can give you NCBI taxonomy information from taxid (for e.g. [ETE toolkit](http://etetoolkit.org/) is an excellent package). But I wrote the script to create the database at a time when (a) there were not many packages available; (b) I was learning R and thought learning both R and sqlite won't be a bad practice; (c) having your own scripts gives you the flexibility to customize as per necessity.
 
 ### Take-off to Jupyter :rocket:
 
